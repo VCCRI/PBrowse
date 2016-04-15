@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>"Unit Tests"</title>
+</head>
+<body>
+<p>Running tests now...</p>
+</body>
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+<!-- Collabmanager -->
+<script src="js/collabmanager.js"></script>
+
+<script>
+
+//array of user connections
+function sleep( sleepDuration ){
+    var now = new Date().getTime();
+    while(new Date().getTime() < now + sleepDuration){ /* do nothing */ } 
+}
+
+function connectXUsers(x)
+{
+	var num = x;
+	
+	for (var i=0; i<x; i++)
+	{
+		var cm = new CollabManager();
+		cm.sock.onopen = function () {cm.sock.close();};
+	}	
+}
+
+//create X number of users
+function createXUsers(x)
+{
+	var cm = new CollabManager();
+	cm.sock.onopen = function () 
+	{
+		for (var i=0; i<x; i++)
+		{
+			cm.doRegister("user"+i, "nick"+i, "user"+i+"@gmail.com", "user"+i, function () {});
+		}
+	}
+}
+
+//login/logout x users
+function loginXUsers(x)
+{
+	var cm = new CollabManager();
+	cm.sock.onopen = function () 
+	{
+		for (var i=0; i<x; i++)
+		{
+			cm.doLogin("user"+i, "user"+i, function () {});
+			cm.doLogout();
+		}
+	};
+}
+
+</script>
+
+</html>

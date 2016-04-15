@@ -1,0 +1,154 @@
+body{padding-top:70px;padding-bottom: 93px;font-family: 'Roboto', sans-serif}
+.thumbnail{padding:0;}
+.thumbnail .caption-full{padding:9px;color:#333;}
+footer{margin:10px 0;}
+@media (min-width:768px)
+{
+	.container{width:100%;}
+}
+@media (min-width:992px)
+{
+	.container{width:100%;}
+}
+@media (min-width:1200px)
+{
+	.container{width:100%;}
+}
+*.dalliance img{width:auto \9;height:auto;max-width:16px;vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;}
+input.text{margin-bottom:4px;width:100%;padding:2px;}
+fieldset{padding:0;border:0;margin-top:0px;}
+h1{font-size:1.2em;margin:.6em 0;}
+.hidden{display:none !important;}
+fieldset > label{margin-bottom:-1px;}
+hr{margin-top:6px;margin-bottom:10px;border:0;border-top:1px solid #eee;}
+.ui-progressbar{position:relative;}
+.ni{font-size: 13px;display: none;font-weight: bold;background-color: #5CB85C;color: #FFF;padding: 1px 6px;border-radius: 12px;margin-left: 10px;}
+.nc{list-style-type: none;padding-left: 22px;cursor: pointer;word-break: break-all;}
+.ne{color: #2D631C;}
+.tex{font-size: 10px;vertical-align: middle;}
+.cnt{vertical-align: middle;}
+.ch{padding: 0px 0px;margin: 3px 0px;font-size: 14px;font-style: italic;cursor: pointer;}
+.lihandle{
+	margin-left: -25px;
+	font-size: 14px;
+	padding-right: 10px;
+}
+.loc{font-weight: bold;padding-left: 4px;}
+.ctext{font-style: italic;padding-left: 4px;}
+.tlabel{text-align: right;padding-right: 6px;}
+.grpn{margin-top: -3px;margin-bottom: 0px;}
+.dalliance-root{max-height:none !important;}
+.desc_tag{border-width: 1px;border-color: black;border-style: solid;border-radius: 9px;padding: 0px 6px;background-color: #D9EDF7;}
+.test_q {display:none;}
+.answerField {display:none;}
+.endResponse {display:none;}
+.t_leaderquestion {display:none;}
+.t_browser_name{color: red;font-size: 20px;}
+.main-holder{height:100% !important;}
+.tier-holder{overflow-y: hidden !important;}
+table{font-size: 14px !important;}
+.dalliance .btn{padding: 7px 12px;height: 30px}
+.dalliance table {width:100%;}
+.dataTables_filter{float: right;}
+#profilemanagerDLG table td {padding:2px 0px;}
+#commentlist h4 {padding:2px 0px;}
+.modal {
+  z-index: 9999 !important;
+  text-align: center;
+}
+.fa {line-height: inherit !important;}
+input[type=password]{font-size: 9px;}
+
+.panel-title > a:focus, .panel-title > a:hover {outline:none; text-decoration:none;}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+tbody > tr {cursor: pointer;}
+
+@media screen and (max-width: 1000px) { 
+  #fileManagerDiv {overflow-x: auto;} 
+  #publicfileManagerDiv {overflow-x: auto;}
+}
+
+.modal-dialog {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+}
+
+#progressbar {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+textarea {
+   resize: none;
+}
+.dt_hidden_column {display:none;}
+.label-human{background-color: #0A900A;}
+.label-mouse{background-color: #D80C0C;}
+.label-worm{background-color: #8A3131;}
+.label-zebrafish{background-color: #4343BA;}
+.label-aspergillus{background-color: rgb(0, 122, 122);}
+.dalliance input[type="text"] {width:100% !important; height:25px !important;}
+.pbrowse_footer{position: fixed;bottom: 0px;width: 100%;background-color: white;z-index: 6667;}
+@media (max-width:992px)
+{
+	#sessionChatPanel {
+	    position: fixed;
+	    bottom: 40px;
+	    left: 15px;
+	    z-index: 1001;
+	    margin-right: 0px;
+	    width: 100%;
+	    padding-right: 30px;
+	}
+}
+@media (min-width:992px)
+{
+	#sessionChatPanel {
+		position: fixed;
+		bottom: 40px;
+		left: 15px;
+		z-index: 1001;
+		margin-right: 33.33333%;
+		width: 66.66667%;
+		padding-right: 30px;
+	}​
+}
+#adminControllerDiv input[type=checkbox] {margin-top: 2px;}
+div#commentlist ul { padding-left: 20px; } 
+.p_onlyme {color:red;}
+.p_public {color:green;}
+.p_private {color:orange;}
+.modal-backdrop{z-index:6700;}
+.modal-fm{width:350px;}
+

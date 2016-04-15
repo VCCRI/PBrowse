@@ -1,0 +1,122 @@
+CREATE DATABASE pbrowsedb;
+USE pbrowsedb;
+
+CREATE USER 'pbrowse'@'localhost' IDENTIFIED BY 'pbrowse';
+
+CREATE TABLE users (
+username VARCHAR(20),
+password VARCHAR(128) NOT NULL,
+email VARCHAR(64) NOT NULL,
+nick VARCHAR(20) NOT NULL,
+sessionkey VARCHAR(128) NULL,
+saved_config TEXT NULL,
+activated BOOLEAN DEFAULT false,
+PRIMARY KEY (username)
+);
+
+CREATE TABLE tokens (
+id BIGINT NOT NULL AUTO_INCREMENT,
+username VARCHAR(20),
+token VARCHAR(32) NOT NULL,
+funct INT NOT NULL,
+params TEXT,
+PRIMARY KEY (id),
+FOREIGN KEY (username) 
+	REFERENCES users(username) 
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
+);
+
+CREATE TABLE groups (
+name VARCHAR(128) NOT NULL,
+owner VARCHAR(20) NOT NULL,
+PRIMARY KEY (name),
+FOREIGN KEY (owner) 
+	REFERENCES users(username) 
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
+);
+
+CREATE TABLE membership (
+id BIGINT NOT NULL AUTO_INCREMENT,
+groupname VARCHAR(128) NOT NULL,
+username VARCHAR(20) NOT NULL,
+access_level INT,
+PRIMARY KEY (id),
+UNIQUE KEY (groupname,username),
+FOREIGN KEY (groupname) 
+	REFERENCES groups(name) 
+	ON UPDATE CASCADE
+	ON DELETE CASCADE,
+FOREIGN KEY (username) 
+	REFERENCES users(username) 
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
+);
+
+CREATE TABLE data (
+id BIGINT NOT NULL AUTO_INCREMENT,
+owner VARCHAR(20),
+trackname VARCHAR(64),
+description TEXT,
+path TEXT,
+format TEXT,
+ispublic SMALLINT DEFAULT 0,
+indexedby BIGINT DEFAULT NULL,
+isindex BOOLEAN NOT NULL,
+remote BOOLEAN DEFAULT false,
+PRIMARY KEY (id),
+FOREIGN KEY (owner) 
+	REFERENCES users(username)
+	ON DELETE CASCADE 
+	ON UPDATE CASCADE,
+FOREIGN KEY (indexedby) 
+	REFERENCES data(id)
+	ON DELETE CASCADE 
+	ON UPDATE CASCADE
+);
+
+CREATE TABLE groupacls (
+id BIGINT NOT NULL AUTO_INCREMENT,
+groupname VARCHAR(128) NOT NULL,
+fileid BIGINT NOT NULL,
+require_level INT,
+PRIMARY KEY (id),
+UNIQUE KEY (fileid,groupname),
+FOREIGN KEY (groupname) 
+	REFERENCES groups(name) 
+	ON UPDATE CASCADE
+	ON DELETE CASCADE,
+FOREIGN KEY (fileid) 
+	REFERENCES data(id) 
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
+);
+
+CREATE TABLE comments (
+id BIGINT NOT NULL AUTO_INCREMENT,
+trackref BIGINT NOT NULL,
+ctext TEXT,
+chromosome VARCHAR(16) NOT NULL,
+startpos BIGINT NOT NULL,
+endpos BIGINT NOT NULL,
+creator VARCHAR(20) NOT NULL,
+ispublic SMALLINT DEFAULT 0,
+PRIMARY KEY (id),
+FOREIGN KEY (trackref) 
+	REFERENCES data(id)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
+FOREIGN KEY (creator) 
+	REFERENCES users(username)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE	
+);
+
+GRANT SELECT, INSERT, UPDATE ON pbrowsedb.users TO pbrowse;
+GRANT SELECT, UPDATE, INSERT, DELETE ON pbrowsedb.data TO pbrowse;
+GRANT SELECT, UPDATE, INSERT, DELETE ON pbrowsedb.comments TO pbrowse;
+GRANT SELECT, UPDATE, INSERT, DELETE ON pbrowsedb.groups TO pbrowse;
+GRANT SELECT, UPDATE, INSERT, DELETE ON pbrowsedb.membership TO pbrowse;
+GRANT SELECT, UPDATE, INSERT, DELETE ON pbrowsedb.groupacls TO pbrowse;
+GRANT SELECT, UPDATE, INSERT, DELETE ON pbrowsedb.tokens TO pbrowse;
