@@ -1,7 +1,9 @@
 # PBrowse: A web-based platform for real-time collaborative exploration and sharing of genomic data
 
 Authors: Peter S. Szot, Andrian Yang, Joshua Ho
+
 Contact: j.ho@victorchang.edu.au
+
 Copyright (c) 2016, Victor Chang Cardiac Research Institute
 
 This repository contains both the PBrowse web-application and the PBrowse collaborative server.
