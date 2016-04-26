@@ -63,6 +63,8 @@ Copy the created *.war* file from *./target/* directory to your jetty installati
 $ cp ./target/*.war /opt/jetty/webapps/root.war
 ```
 
+To avoid jetty extracting war to temporary directory, create a working directory (*work*) for Jetty user the jetty installation directory.
+
 ## Configure Jetty SSL
 
 The application itself can run over http, but the underlying websocket connection must be run over SSL so you have to configure the SSL conector in Jetty. If you aren't familiar with the process, see this

@@ -89,6 +89,8 @@ Copy the created *.war* file from *./target/* directory to your jetty installati
 cp ./target/*.war /opt/jetty/webapps/root.war
 ```
 
+To avoid jetty extracting war to temporary directory, create a working directory (*work*) for Jetty user the jetty installation directory.
+
 ## Configure Jetty SSL
 
 The application itself can run over http, but the underlying websocket connection must be run over SSL so you have to configure the SSL connector in Jetty. If you aren't familiar with the process, see this
@@ -180,7 +182,7 @@ http://localhost:8080/
 
 To access pbrowse, you currently need to specify the 8080 port for http and 8443 port for https. In order to allow access using the standard http and https port (80 and 443 respectively), you need to set up iptables redirect. (Information taken from [jetty doc](http://www.eclipse.org/jetty/documentation/current/setting-port80-access.html) and [this instruction](https://gist.github.com/kentbrew/776580).)
 
-Check that no configuration has been previously made using 
+Check that no configuration has been previously made using
 ```
 sudo iptables -t nat -L
 ```
